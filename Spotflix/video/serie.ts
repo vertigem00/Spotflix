@@ -12,7 +12,7 @@ class Serie extends Video{
 		this.duracaoMediaDeEpisodio = duracaoMediaDeEpisodio;
 	}
 
-	public executar() : void{}
+	public executar() : void{};
 
 	public getNumeroDeEpisodios() : number{
 		return this.numeroDeEpisodios;

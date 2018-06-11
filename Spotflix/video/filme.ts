@@ -9,7 +9,7 @@ class Filme extends Video{
 		this.duracao = duracao;
 	}
 
-	public executar() : void{}
+	public executar() : void{};
 
 	public getDuracao() : number{
 		return this.duracao;
