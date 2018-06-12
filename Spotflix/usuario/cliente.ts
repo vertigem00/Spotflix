@@ -9,7 +9,7 @@ export abstract class Cliente extends Usuario{
 	private listaDeProdutos : Array<Produto>;
 	private cartaoDeCredito : CartaoDeCredito;
 
-	public constructor(endereco : string, dataDeNascimento : Data, listaDeProdutos : Array<Produtos>, cartaoDeCredito : CartaoDeCredito, nome : string, email : string, senha : string){
+	public constructor(endereco : string, dataDeNascimento : Data, listaDeProdutos : Array<Produto>, cartaoDeCredito : CartaoDeCredito, nome : string, email : string, senha : string){
 		super(nome, email, senha);
 		this.endereco = endereco;
 		this.dataDeNascimento = dataDeNascimento;
@@ -33,11 +33,11 @@ export abstract class Cliente extends Usuario{
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
-	public getListaDeProdutos() : Array<Produtos>{
+	public getListaDeProdutos() : Array<Produto>{
 		return this.listaDeProdutos;
 	}
 
-	public setListaDeProdutos(listaDeProdutos : Array<Produtos>) : void{
+	public setListaDeProdutos(listaDeProdutos : Array<Produto>) : void{
 		this.listaDeProdutos = listaDeProdutos;
 	}
 
