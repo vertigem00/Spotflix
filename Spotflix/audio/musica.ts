@@ -1,7 +1,7 @@
 import {Produto} from '../produto'
 import {Audio} from './audio'
 
-class Musica extends Audio {
+export class Musica extends Audio {
     private album : string;
 
     public constructor(codigo : string, nome : string, genero : string, preco : number,
@@ -10,7 +10,9 @@ class Musica extends Audio {
         this.album = album;
     }
 
-    executar() : void {}
+    public executar() : void {
+        console.log("Executando: ");
+    }
 
     public getAlbum() : string {
         return this.album;

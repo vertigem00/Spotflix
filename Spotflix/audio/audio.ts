@@ -6,28 +6,30 @@ export abstract class Audio extends Produto {
 
     public constructor(codigo : string, nome : string, genero : string, preco : number,
         autor : string, duracao : number) {
-            super(codigo, nome, genero, preco);
-            this.autor = autor;
-            this.duracao = duracao;
-        }
+        super(codigo, nome, genero, preco);
+        this.autor = autor;
+        this.duracao = duracao;
+    }
 
-        public getAutor() : string{
-            return this.autor;
-        }
+    public getAutor() : string{
+        return this.autor;
+    }
 
-        public setAutor(autor : string) : void {
-            this.autor = autor;
-        }
+    public setAutor(autor : string) : void {
+        this.autor = autor;
+    }
 
-        public getDuracao() : number {
-            return this.duracao;
-        } 
+    public getDuracao() : number {
+        return this.duracao;
+    } 
 
-        public setDuracao(duracao : number) : void {
-            this.duracao = duracao;
-        }
+    public setDuracao(duracao : number) : void {
+        this.duracao = duracao;
+    }
         
-    abstract executar() : void;
+    public executar() : void{
+        console.log("Executando: ");
+    }
 
 
 }
