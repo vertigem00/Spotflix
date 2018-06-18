@@ -1,6 +1,6 @@
 import {Video} from './Video';
 
-class Serie extends Video{
+export class Serie extends Video{
 	private numeroDeEpisodios : number;
 	private duracaoMediaDeEpisodio : number;
 
@@ -12,7 +12,9 @@ class Serie extends Video{
 		this.duracaoMediaDeEpisodio = duracaoMediaDeEpisodio;
 	}
 
-	public executar() : void{};
+	public executar() : void{
+		console.log("Executando: ");
+	};
 
 	public getNumeroDeEpisodios() : number{
 		return this.numeroDeEpisodios;

@@ -26,4 +26,8 @@ export abstract class Video extends Produto{
 	public setFaixaEtaria(faixaEtaria : number) : void{
 		this.faixaEtaria = faixaEtaria;
 	}
+
+	public executando() : void{
+		console.log("Executando: ");
+	}
 }
