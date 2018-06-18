@@ -2,6 +2,7 @@ import {Usuario} from './usuario';
 import {Data} from '../data';
 import {Produto} from '../produto';
 import {CartaoDeCredito} from './cartaoDeCredito'
+import {RepositorioDeProduto} from './RepositorioDeProduto';
 
 export abstract class Cliente extends Usuario{
 	private endereco : string;
@@ -49,15 +50,40 @@ export abstract class Cliente extends Usuario{
 		this.cartaoDeCredito = cartaoDeCredito;
 	}
 
-	public cadastrar(){
-
-	}
-
 	public comprarProduto(){
+		let preco = 0
+        if(RepositorioDeProduto.length == 0){
+            return false;
+        }else{
+            for(let produto of this.listaDeProdutos){
+                preco += produto.getPreco();
 
+            }
+
+        } return true;
 	}
 
-	public executarMidia(){
-		
-	}
+	public listarMeusProdutos() : void{
+       for(let produto of this.listaDeProdutos){
+           console.log(produto.getNome());
+
+       }
+    }
+
+    public limiteDoCartao() : boolean{
+        let soma = 0;
+        if(RepositorioDeProduto.length == 0){
+            return false;
+        }else{
+            for(let produto of this.listaDeProdutos){
+                soma += produto.getPreco();
+                
+            }
+        }
+        if(this.cartaoDeCredito.getLimite() >= soma){
+            return true
+        }else{
+            return false;
+        }
+    }
 }
