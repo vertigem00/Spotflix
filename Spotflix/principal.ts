@@ -10,17 +10,32 @@ import {Gerente} from './usuario/gerente';
 import {OperadorDeSistema} from './usuario/operador';
 import {Usuario} from './usuario/usuario';
 import {RepositorioDeUsuario} from './usuario/RepositorioDeUsuario'
+import {RepositorioDeProduto} from './usuario/RepositorioDeProduto'
+import {Video} from './video/video'
+import {Filme} from './video/filme'
+import {Serie} from './video/serie'
 
-let c : Usuario = new Cliente("rua afonso pena");
+
+let userLogado : Usuario | undefined = undefined;
+
+let repositorioDeProdutos : RepositorioDeProduto = new RepositorioDeProduto();
+let repositorioDeUsuario : RepositorioDeUsuario = new RepositorioDeUsuario();
+
+let gerente : Gerente = new Gerente("0101",50000,"Alessandro","ale@mc", "ale123");
+repositorioDeUsuario.usuarios.push(gerente);
+// repositorioDeUsuario.procurarUsuarioLogado("l@gas");
+// console.log(repositorioDeUsuario.procurarUsuarioLogado("l@gas"));
+
+let c : Usuario = new Cliente("rua afonso pena", 10 07 1999, ["01", "bolacha", "comida", 2.00], );
 
 while(true){/*bem vindo*/
-	let op : string = readline.question("*** Bem Vindo *** \n 1- Logar\n 2- Cadastrar-se como cliente\n 3- Sair\n Digite uma opção: ");
+	let op : string = readline.question("*** Bem Vindo ***\n 1- Logar\n 2- Cadastrar-se como cliente\n 3- Sair\n Digite uma opção: ");
 	if(op=="3") break;
 	if(op=="2"){
 		let nome = readline.question("Nome: ");
-		Cliente.nome = nome;
+		Cliente.setNome(nome);
 		let email = readline.question("Email: ");
-		if(email != Cliente.email){
+		if(email != Cliente.getNome()){
 			console.log("Email inválido ou já cadastrado!");
 		}else{
 			Cliente.setEmail(email);	

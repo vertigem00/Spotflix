@@ -1,41 +1,61 @@
 import {Produto} from './produto'
 import {Data} from './data'
+import {Video} from './video/video';
+import {Filme} from './video/filme';
+import {Serie} from './video/serie';
+import {Podcast} from './audio/podcast';
+import {Musica} from './audio/musica';
 
 export class Pacote extends Produto {
-    private produtos : Array<Produto>
-    private validade : Data;
-    private precoMensal : number;
+    private  filmes?: Array<Filme>; 
+    private  series?: Array<Serie>;
+    private  musica?: Array<Musica>;
+    private  podcast?: Array<Podcast>; 
+    private produtos: Array<Produto>;
 
-    public constructor(codigo : string, nome : string, genero : string, preco : number, produtos : Array<Produto>,
-                        validade : Data, precoMensal : number){
-        super(codigo, nome, genero, preco);
+    private validade : Data;
+    private precoProduto : number;
+
+    public constructor (codigo:string, nome:string, genero:string, preco:number, produtos:Array<Produto>, validade: Data, precoProduto:number, filmes?: Array<Filme>, series?: Array<Serie>, musica?: Array<Musica>, podcast?: Array<Podcast>){
+        
+        super (codigo, nome, genero, preco);
+        this.filmes = filmes;
+        this.series = series;
+        this.musica = musica;
+        this.podcast = podcast;
+        
+        this.produtos = produtos;
+        this.validade = validade;
+        this.precoProduto = precoProduto;
     }
 
-    getProdutos() : Array<Produto> {
+    public getProdutos() : Array<Produto> {
         return this.produtos;
     }
 
-    setProdutos(produtos : Array<Produto>) : void {
+    public setProdutos(produtos : Array<Produto>) : void {
         this.produtos = produtos;
     }
 
-    getValidade() : Data {
+    public getValidade() : Data {
         return this.validade;
     }
 
-    setValidade(validade : Data) : void {
+    public setValidade(validade : Data) : void {
         this.validade = validade;
     }
 
-    getPrecoMensal() : number {
+    public getPrecoMensal() : number {
         return this.precoMensal;
     }
 
-    setPrecoMensal(PrecoMensal : number) : void {
-        this.precoMensal = this.precoMensal;
+    public setPrecoMensal(PrecoProduto : number) : void {
+        this.precoProduto = this.precoProduto;
     }
 
-    executar() : void {
-        console.log("Não pega")
+    public executar():  void{
     }
+    /*public precoMensal(precoProduto: number): number{
+    return this.precoProtudo*0,15;
+    }*/
 }
