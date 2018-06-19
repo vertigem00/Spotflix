@@ -28,7 +28,7 @@ export abstract class Audio extends Produto {
     }
         
     public executar() : void{
-        console.log("Executando: ");
+        console.log("Executando... ");
     }
 
 
