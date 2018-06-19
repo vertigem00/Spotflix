@@ -16,6 +16,8 @@ import {Filme} from './video/filme'
 import {Serie} from './video/serie'
 import {CartaoDeCredito} from './usuario/cartaoDeCredito';
 import {Audio} from './audio/audio';
+import {Musica} from './audio/musica';
+import {Podcast} from './audio/podcast';
 
 
 let userLogado : Usuario | undefined = undefined;
@@ -63,8 +65,7 @@ while(true){/*bem vindo*/
 
                 let operacoes : string = "1 - Cadastrar Operador \n 2 - Remover Operador \n 3 - Listar Produtos \n 4 - Listar Clientes \n 5 - Listar Operadores \n 6 - Procurar Produto \n 7 - Procurar Cliente \n 8 - Procurar Operador \n 9 - Sair \n";
 
-                console.log(`Olá gerente ${usuario.getNome()}`);
-                console.log("O que deseja fazer hoje? \n")
+                console.log(`***Olá gerente ${usuario.getNome()}***`);
                 console.log(operacoes);
                 comandoGerente = readline.question("Digite uma opcao: ").split(" ");
 
@@ -136,8 +137,7 @@ while(true){/*bem vindo*/
     
                 let operacoes : string ="1 - Cadastrar Produto \n 2 - Remover Produto \n 3 - Listar Produtos \n 4 - Listar Clientes \n 5 - Procurar Produto \n 6 - Procurar Cliente \n 7 - Sair";
     
-                console.log(`Ola Operador ${usuario.getNome()}`);
-                console.log("O que deseja fazer hoje? \n")
+                console.log(`***Ola Operador ${usuario.getNome()}***`);
                 console.log(operacoes);
 
                 comandoOperador = readline.question("Digite uma opção: ").split(" ");
@@ -145,8 +145,7 @@ while(true){/*bem vindo*/
 
                     let listaProdutos : string =  "Voce poderá adicionar esses produtos: \n"+
                                                 "1 - Vídeo \n" +
-                                                "2 - Audio \n" +
-                                                "3 - Pacotes \n";
+                                                "2 - Audio \n";
                 
                     console.log(listaProdutos);
 
@@ -190,25 +189,45 @@ while(true){/*bem vindo*/
                             repositorioDeProdutos.adicionarSerie(codigoSerie,nomeSerie,generoSerie,precoSerie,anoLancamentoSerie,faixaEtariaSerie,numeroDeEpisodios,duracaoMediaDeEpisodios);
                         	console.log("Serie adicionada!");
                         }
-
-                        /*if(comandoVideo[0] == "3"){
-                            
-                            let listaProd = readline.question("Digite o nome dos produtos: ").split(",");
-                            let validadeSerie = readline.question("Digite a validade(dd/mm/aaaa): ").split("/");
-
-                            let pacote : Produto = new Pacote();
-                            repositorioDeProdutos.adicionarSerie(codigoSerie,nomeSerie,generoSerie,precoSerie,anoLancamentoSerie,faixaEtariaSerie,numeroDeEpisodios,duracaoMediaDeEpisodios);
-                        	console.log("Serie adicionada!");
-                        }*/
-  
                     }
 
                     if(prodtudoAdiconar[0] == "2"){
-                    	console.log("Produto: \n");
-            			console.log(repositorioDeProdutos.listarProdutos());
-            			let codigo = readline.question("Escolha um produto: ");
-            			repositorioDeProdutos.removerProduto(codigo);
-            			console.log(repositorioDeProdutos.listarProdutos()+"\n Produto excluído!");
+                    	let comandoAudio = Array<string>();
+                        let listaVideos : string = "Escolha o tipo de audio que deseja adicionar: \n 1 - Musica \n 2 - Podcast";
+                        console.log(listaVideos);
+                        
+                        comandoAudio = readline.question("Digite a opção desejada: ").split(" "); 
+
+
+                        if (comandoAudio[0]== "1"){
+                                
+                            let codigoMusica = readline.question("Digite o codigo da musica: ");
+                            let nomeMusica = readline.question("Digite o nome da musica: ");
+                            let generoMusica = readline.question("Digite o genero da musica: ");
+                            let precoMusica = readline.question("Digite o preco da musica: ");
+                            let autorMusica = readline.question("Digite o autor da musica: ");
+                            let duracaoMusica = readline.question("Digite a duracao da musica: ");
+                            let albumMusica = readline.question("Digite o nome do album: ");
+
+                            let aud : Audio = new Musica(codigoMusica, nomeMusica, generoMusica, precoMusica, autorMusica, duracaoMusica, albumMusica);
+                            repositorioDeProdutos.adicionarMusica(codigoMusica, nomeMusica, generoMusica, precoMusica, autorMusica, duracaoMusica, albumMusica);
+                            console.log("Musica adicionada!");
+                        }
+
+                        if(comandoAudio[0] == "2"){
+                            
+                            let codigoPodcast = readline.question("Digite o código do podcast: ");
+                            let nomePodcast = readline.question("Digite o nome do podcast: ");
+                            let generoPodcast = readline.question("Digite o genero do podcast: ");
+                            let precoPodcast = readline.question("Digite o preco do podcast: ");;
+                            let autorPodcast = readline.question("Digite o nome do autor: ");
+                            let duracaoPodcast = readline.question("Digite a duracao do podcast: ");
+                            let tematicaPodcast = readline.question("Digite a tematica do podcast: ");
+
+                            let podcast : Audio = new Podcast(codigoPodcast,nomePodcast,generoPodcast,precoPodcast,autorPodcast,duracaoPodcast, tematicaPodcast);
+                            repositorioDeProdutos.adicionarPodcast(codigoPodcast,nomePodcast,generoPodcast,precoPodcast,autorPodcast,duracaoPodcast, tematicaPodcast);
+                        	console.log("Podcast adicionado!");
+                        }
                         
                     }
                 }
@@ -252,8 +271,7 @@ while(true){/*bem vindo*/
             	let comandoCliente : Array<string>;
             	console.log(" ");
             	let operacoes : string ="1 -Listar produtos da loja \n 2 - Listar meus produtos \n 3 - Comprar produto \n 4 - Play \n 5 - Sair \n";
-            	console.log(`Ola cliente ${usuario.getNome()}`);
-            	console.log("O que você  deseja fazer agora? \n");
+            	console.log(`***Ola cliente ${usuario.getNome()}***`);
             	console.log(operacoes);
             	comandoCliente = readline.question("Digite uma opcao: ").split(" ");
 
