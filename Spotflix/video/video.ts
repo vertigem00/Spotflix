@@ -28,6 +28,6 @@ export abstract class Video extends Produto{
 	}
 
 	public executando() : void{
-		console.log("Executando: ");
+		console.log("Executando... ");
 	}
 }
