@@ -46,16 +46,15 @@ export class Pacote extends Produto {
     }
 
     public getPrecoMensal() : number {
-        return this.precoMensal;
+        return this.precoProduto * 0.15;
     }
 
     public setPrecoMensal(PrecoProduto : number) : void {
-        this.precoProduto = this.precoProduto;
+        this.precoProduto = PrecoProduto * 0.15;
     }
 
     public executar():  void{
+        console.log("Executando...");
     }
-    /*public precoMensal(precoProduto: number): number{
-    return this.precoProtudo*0,15;
-    }*/
+    
 }

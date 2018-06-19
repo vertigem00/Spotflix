@@ -22,8 +22,8 @@ let userLogado : Usuario | undefined = undefined;
 
 let repositorioDeProdutos : RepositorioDeProduto = new RepositorioDeProduto();
 let repositorioDeUsuario : RepositorioDeUsuario = new RepositorioDeUsuario();
-
 let gerente : Gerente = new Gerente("0101",50000,"Alessandro","ale@mc", "ale123");
+
 repositorioDeUsuario.usuarios.push(gerente);
 
 while(true){/*bem vindo*/
@@ -55,7 +55,7 @@ while(true){/*bem vindo*/
 
         let usuario = repositorioDeUsuario.usuarioLogin(email, senha);
         if(usuario instanceof Gerente){
-            let flag:number = 0;
+            let flag : number = 0;
 
             while(flag == 0){
                 let comandoGerente : Array<string>;
@@ -106,34 +106,28 @@ while(true){/*bem vindo*/
                     let procurarProduto = readline.question("Digite o código do produto: ");
                     if(procurarProduto == repositorioDeProdutos.procurarProduto(procurarProduto)){
                         console.log("Produto: "+ repositorioDeProdutos.procurarProduto(procurarProduto));
-                    
                     }
                 }
                 else if(comandoGerente[0] == "7"){
-                    let procuraCliente = readline.question("Digite o cemail do cliente: ");
+                    let procuraCliente = readline.question("Digite o email do cliente: ");
                     if(procuraCliente == repositorioDeUsuario.procurarCliente(procuraCliente)){
                         console.log("Cliente: " + repositorioDeUsuario.procurarCliente(email));
-
-                    }
-                    
+                	}
                 }
-
                 else if(comandoGerente[0] == "8"){
                     let procurarOperador = readline.question("Digite o email do operador: ");
                     if(procurarOperador == repositorioDeUsuario.procurarCliente(procurarOperador)){
                         console.log("Operador de Sistema: " + repositorioDeUsuario.procurarOperador(email));
-
+                    }else{
+                    	console.log("Operador não encontrado!")
                     }
-                }
 
-                else if(comandoGerente[0] == "9"){
+                }else if(comandoGerente[0] == "9"){
                     flag = 1;
-                }else{ 
-                	flag = 1;
-            	}
+                }
             }
         }
-
+    
         else if(usuario instanceof OperadorDeSistema){
             let flag: number = 0;
             while(flag == 0){
@@ -218,6 +212,37 @@ while(true){/*bem vindo*/
                         
                     }
                 }
+                else if(comandoOperador[0] == "2"){
+                	console.log("Remover Produto");
+                    let removeProduto = readline.question("Digite o codigo do produto: ");
+                    repositorioDeProdutos.removerProduto(removeProduto);
+                }
+
+                else if(comandoOperador[0] == "3"){
+                    console.log("Lista de Produtos: ");
+                    console.log(repositorioDeProdutos.listarProdutos());
+                }
+
+                else if(comandoOperador[0] == "4"){
+                    console.log("Lista de Clientes: \n");
+                    console.log(repositorioDeUsuario.listarClientes());
+                }
+
+                else if(comandoOperador[0] == "5"){
+                    let procurarProduto = readline.question("Digite o código do produto: ");
+                    if(procurarProduto == repositorioDeProdutos.procurarProduto(procurarProduto)){
+                        console.log("Produto: "+ repositorioDeProdutos.procurarProduto(procurarProduto));
+                    }
+                }
+                else if(comandoOperador[0] == "6"){
+                    let procuraCliente = readline.question("Digite o email do cliente: ");
+                    if(procuraCliente == repositorioDeUsuario.procurarCliente(procuraCliente)){
+                        console.log("Cliente: " + repositorioDeUsuario.procurarCliente(email));
+                	}
+                }
+                else if(comandoOperador[0] == "7"){
+                	flag = 1;
+                }
             }
         }
 
@@ -242,8 +267,13 @@ while(true){/*bem vindo*/
             		console.log("Produto: \n");
             		console.log(repositorioDeProdutos.listarProdutos());
             		let codigo = readline.question("Escolha um produto: ");
-            		repositorioDeProdutos.removerProduto(codigo);
-            		console.log(repositorioDeProdutos.listarProdutos()+"\n Produto comprado!");
+            		if(codigo = repositorioDeProdutos.listarProdutos){
+            			repositorioDeProdutos.removerProduto(codigo);
+            			console.log(repositorioDeProdutos.listarProdutos()+"\n Produto comprado!");
+            		}else{
+            			console.log("Produto não encontrado!")
+            		}
+            		
             	}
             	if(comandoCliente[0] == "4"){
 					let listaProdutos : string =  "Você poderá dar play nesses produtos: \n"+
@@ -253,11 +283,13 @@ while(true){/*bem vindo*/
             	    console.log(listaProdutos);
             	    let comandoPlay = readline.question("Digite uma opção: ").split(" ");
 
+            	    console.log(" ");
+            	    console.log("Não deu tempo terminar.");
             	    /*if(comandoPlay[0] == "1"){
             	    	console.log("Filmes: "+ repositorioDeProdutos.mapaFilme());
             	    	console.log("Séries: " + repositorioDeProdutos.mapaSerie());
            		     	let op = readline.question("Escolhe um vídeo: ");
-            	    	if(op of repositorioDeProdutos.procurarProduto(op)){
+            	    	if(op == repositorioDeProdutos.procurarProduto(op)){
             	    		console.log(op.executando());
             	    	}
             	    }
@@ -265,7 +297,7 @@ while(true){/*bem vindo*/
             	    	console.log("Musica: "+ repositorioDeProdutos.mapaMusica());
             	    	console.log("Podcast: " + repositorioDeProdutos.mapaPodcast());
            		     	let op = readline.question("Escolhe um audio: ");
-            	    	if(op of repositorioDeProdutos.procurarProduto(op)){
+            	    	if(op == repositorioDeProdutos.procurarProduto(op)){
             	    		console.log(op.executando());
             	    	}
             	    }*/
