@@ -304,16 +304,16 @@ while(true){/*bem vindo*/
             	    console.log(" ");
             	    //console.log("Não deu tempo terminar.");
             	    if(comandoPlay[0] == "1"){
-            	    	console.log("Filmes: "+ repositorioDeProdutos.mapaFilme());
-            	    	console.log("Séries: " + repositorioDeProdutos.mapaSerie());
+            	    	console.log("Filmes: "+ repositorioDeProdutos.listarProdutos());
+            	    	console.log("Séries: " + repositorioDeProdutos.listarProdutos());
            		     	let op = readline.question("Escolhe um vídeo: ");
             	    	if(op == repositorioDeProdutos.procurarProduto(op)){
             	    		console.log(op.executando());
             	    	}
             	    }
             	    if(comandoPlay[0] == "2"){
-            	    	console.log("Musica: "+ repositorioDeProdutos.);
-            	    	console.log("Podcast: " + repositorioDeProdutos.mapaPodcast());
+            	    	console.log("Musica: "+ repositorioDeProdutos.listarProdutos());
+            	    	console.log("Podcast: " + repositorioDeProdutos.listarProdutos());
            		     	let op = readline.question("Escolha um audio pelo codigo: ");
             	    	if(op == repositorioDeProdutos.procurarProduto(op)){
             	    		console.log(op.executando());
