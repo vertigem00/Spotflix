@@ -1,6 +1,7 @@
 import {Data} from '../data';
+import {RepositorioDeProduto} from "./RepositorioDeProduto";
 
-export abstract class CartaoDeCredito{
+export class CartaoDeCredito{
 	private numero : string;
 	private validade : Data;
 	private codigoCCV : number;

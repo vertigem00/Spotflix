@@ -4,7 +4,7 @@ import {Produto} from '../produto';
 import {CartaoDeCredito} from './cartaoDeCredito'
 import {RepositorioDeProduto} from './RepositorioDeProduto';
 
-export abstract class Cliente extends Usuario{
+export class Cliente extends Usuario{
 	private endereco : string;
 	private dataDeNascimento : Data;
 	private listaDeProdutos : Array<Produto>;
@@ -57,7 +57,6 @@ export abstract class Cliente extends Usuario{
         }else{
             for(let produto of this.listaDeProdutos){
                 preco += produto.getPreco();
-
             }
 
         } return true;

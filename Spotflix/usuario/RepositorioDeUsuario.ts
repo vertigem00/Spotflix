@@ -51,9 +51,6 @@ export class RepositorioDeUsuario{
     public listarClientes(): Array<Cliente>{
         console.log(this.clientes);
         return this.clientes;
-
-
-
     }
 
    public listarOperadores() : Array<OperadorDeSistema>{
@@ -64,6 +61,15 @@ export class RepositorioDeUsuario{
     public procurarCliente(email : string) : Cliente |null{
         for(let usuario of this.mapadeusuario.values()){
             if(usuario instanceof Cliente && usuario.getEmail()== email){
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public procurarOperador(email : string) : OperadorDeSistema | null{
+        for(let usuario of this.mapadeusuario.values()){
+            if(usuario instanceof OperadorDeSistema && usuario.getEmail()== email){
                 return usuario;
             }
         }
