@@ -3,7 +3,7 @@ import {Cliente} from './cliente';
 import {Produto} from '../produto';
 import {OperadorDeSistema} from './operador';
 
-class Gerente extends Funcionario{
+export class Gerente extends Funcionario{
 
 	public constructor(matricula : string, salario : number, nome : string, email : string, senha : string){
 		super(matricula, salario, nome, email, senha);
